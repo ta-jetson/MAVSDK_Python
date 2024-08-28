@@ -18,7 +18,7 @@ async def run():
     """ Does Offboard control using position NED coordinates. """
 
     drone = System()
-    await drone.connect(system_address="serial:///dev/ttyTHS0:3000000")
+    await drone.connect(system_address="serial:///dev/ttyHS1:2000000")
 
     print("Waiting for drone to connect...")
     async for state in drone.core.connection_state():
@@ -45,32 +45,39 @@ async def run():
     print("-- Go 0m North, 0m East, -1m Down \
             within local coordinate system")
     await drone.offboard.set_position_ned(
-            PositionNedYaw(0.0, 0.0, -0.9, 0.0))
+            PositionNedYaw(0.0, 0.0, -1.0, 0.0))
     await asyncio.sleep(3)
 
     print("-- Go 1m North, 0m East, -1m Down \
             within local coordinate system, turn to face East")
     await drone.offboard.set_position_ned(
-            PositionNedYaw(6.2, 0.0, -0.9, 0.0))
+            PositionNedYaw(2.0, 0.0, -1.0, 0.0))
     await asyncio.sleep(15)
 
     print("-- Go 1m North, 1m East, -1m Down \
             within local coordinate system")
     await drone.offboard.set_position_ned(
-            PositionNedYaw(6.2, 0.0, -0.9, 180.0))
+            PositionNedYaw(2.0, 2.0, -1.0, 90.0))
     await asyncio.sleep(4)
 
     print("-- Go 0m North, 1m East, -1m Down \
             within local coordinate system, turn to face South")
     await drone.offboard.set_position_ned(
-            PositionNedYaw(0.0, 0.0, -0.9, 180.0))
+            PositionNedYaw(0.0, 2.0, -1.0, 180.0))
     await asyncio.sleep(15)
     
     print("-- Go 0m North, 0m East, -1m Down \
             within local coordinate system, turn to face South")
     await drone.offboard.set_position_ned(
-            PositionNedYaw(0.0, 0.0, 0.0, 180.0))
+            PositionNedYaw(0.0, 0.0, -1.0, 270.0))
     await asyncio.sleep(10)
+
+    print("-- Go 0m North, 0m East, -1m Down \
+            within local coordinate system, turn to face South")
+    await drone.offboard.set_position_ned(
+            PositionNedYaw(0.0, 0.0, 0.0, 0.0))
+    await asyncio.sleep(10)
+
 
     print("-- Stopping offboard")
 
