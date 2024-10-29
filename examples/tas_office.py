@@ -18,7 +18,7 @@ async def run():
     """ Does Offboard control using position NED coordinates. """
 
     drone = System()
-    await drone.connect(system_address="serial:///dev/ttyHS1:2000000")
+    await drone.connect(system_address="udp://:14551")
 
     print("Waiting for drone to connect...")
     async for state in drone.core.connection_state():
@@ -52,61 +52,61 @@ async def run():
             within local coordinate system, turn to face East")
     await drone.offboard.set_position_ned(
             PositionNedYaw(4.4, 0.0, -1.0, 0.0))
-    await asyncio.sleep(7)
+    await asyncio.sleep(10)
 
     print("-- Go 1m North, 0m East, -1m Down \
             within local coordinate system, turn to face East")
     await drone.offboard.set_position_ned(
             PositionNedYaw(4.4, 0.0, -1.0, 90.0))
-    await asyncio.sleep(4)
+    await asyncio.sleep(15)
 
     print("-- Go 1m North, 1m East, -1m Down \
             within local coordinate system")
     await drone.offboard.set_position_ned(
             PositionNedYaw(4.45, 2.9, -1.0, 90.0))
-    await asyncio.sleep(5)
+    await asyncio.sleep(15)
 
     print("-- Go 0m North, 1m East, -1m Down \
             within local coordinate system, turn to face South")
     await drone.offboard.set_position_ned(
-            PositionNedYaw(5.9, 5.0, -1.0, 30.0))
-    await asyncio.sleep(8)
+            PositionNedYaw(5.5, 4.7, -1.0, 30.0))
+    await asyncio.sleep(15)
     
     print("-- Go 0m North, 0m East, -1m Down \
             within local coordinate system, turn to face South")
     await drone.offboard.set_position_ned(
-            PositionNedYaw(10.1, 4.8, -1.0, 0))
-    await asyncio.sleep(6)
+            PositionNedYaw(9.8, 4.8, -1.0, 0))
+    await asyncio.sleep(15)
     
     print("-- Go 0m North, 0m East, 0m Down \
             within local coordinate system, turn to face South")
     await drone.offboard.set_position_ned(
-            PositionNedYaw(11.9, 6.6, -1.0, 45))
-    await asyncio.sleep(4)
+            PositionNedYaw(10.9, 6.3, -1.0, 45))
+    await asyncio.sleep(15)
 
     print("-- Go 0m North, 0m East, 0m Down \
             within local coordinate system, turn to face South")
     await drone.offboard.set_position_ned(
-            PositionNedYaw(11.9, 6.6, -1.0, 90))
-    await asyncio.sleep(2)
+            PositionNedYaw(11.3, 10.0, -1.0, 90))
+    await asyncio.sleep(10)
 
     print("-- Go 0m North, 0m East, 0m Down \
             within local coordinate system, turn to face South")
     await drone.offboard.set_position_ned(
-            PositionNedYaw(12.3, 10.0, -1.0, 90.0))
+            PositionNedYaw(11.3, 10.0, -1.0, 90.0))
     await asyncio.sleep(5)
 
     print("-- Go 0m North, 0m East, 0m Down \
             within local coordinate system, turn to face South")
     await drone.offboard.set_position_ned(
-            PositionNedYaw(12.7, 13.0, -1.0, 90.0))
-    await asyncio.sleep(5)
+            PositionNedYaw(12.7, 14.0, -1.0, 90.0))
+    await asyncio.sleep(10)
 
     print("-- Go 0m North, 0m East, 0m Down \
             within local coordinate system, turn to face South")
     await drone.offboard.set_position_ned(
-            PositionNedYaw(12.7, 13.0, 0.3, 90.0))
-    await asyncio.sleep(1)
+            PositionNedYaw(12.7, 14.0, 0.3, 90.0))
+    await asyncio.sleep(10)
 
     print("-- Stopping offboard")
 
