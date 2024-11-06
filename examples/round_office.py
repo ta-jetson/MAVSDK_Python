@@ -175,20 +175,6 @@ async def run():
     await drone.action.land()
 
 
-
-
-    print("-- Stopping offboard")
-
-    try:
-        await drone.offboard.stop()
-    except OffboardError as error:
-        print(f"Stopping offboard mode failed \
-                with error code: {error._result.result}")
-
-    print("-- Landing")
-    await drone.action.land()
-
-
 if __name__ == "__main__":
     # Run the asyncio loop
     asyncio.run(run())
